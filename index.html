@@ -3,29 +3,11 @@
 <head>
     <title>Casual Codes</title>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            margin-top: 50px;
-        }
-        input, button {
-            padding: 10px;
-            margin-top: 10px;
-            font-size: 16px;
-        }
-        #avatar {
-            border-radius: 50%;
-            margin-top: 10px;
-        }
-    </style>
 </head>
 <body>
     <h1>Привет, <span id="user"></span> 👋</h1>
     <img id="avatar" width="100" />
-    <br>
     <input type="text" id="code" placeholder="Введи код">
-    <br>
     <button onclick="submitCode()">Отправить</button>
 
     <script>
@@ -34,13 +16,12 @@
 
         const user = tg.initDataUnsafe.user;
 
-        // Изменённый вывод ID
-        document.getElementById("user").innerText = user.first_name + " (ID: #" + user.id + ")";
+        document.getElementById("user").innerText = user.first_name + " (ID: " + user.id + ")";
         document.getElementById("avatar").src = `https://t.me/i/userpic/320/${user.username}.jpg`;
 
         function submitCode() {
             const code = document.getElementById("code").value;
-            tg.sendData(code); // Отправка кода боту
+            tg.sendData(code);
         }
     </script>
 </body>
