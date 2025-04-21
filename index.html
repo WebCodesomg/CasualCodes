@@ -15,8 +15,11 @@
         tg.expand();
 
         const user = tg.initDataUnsafe.user;
+
         document.getElementById("user").innerText = user.first_name + " (ID: " + user.id + ")";
         document.getElementById("avatar").src = `https://t.me/i/userpic/320/${user.username}.jpg`;
+
+
 
         function submitCode() {
             const code = document.getElementById("code").value;
