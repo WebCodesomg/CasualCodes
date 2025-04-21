@@ -26,7 +26,7 @@
     <br>
     <input type="text" id="code" placeholder="Введи код">
     <br>
-    <button onclick="submitCode()">Отправить</button>
+    <button onclick="submitCode()">Отправи23ть</button>
 
     <script>
         const tg = window.Telegram.WebApp;
@@ -34,7 +34,8 @@
 
         const user = tg.initDataUnsafe.user;
 
-        document.getElementById("user").innerText = user.first_name + " (ID: " + user.id + ")";
+        // Изменённый вывод ID
+        document.getElementById("user").innerText = user.first_name + " (ID: #" + user.id + ")";
         document.getElementById("avatar").src = `https://t.me/i/userpic/320/${user.username}.jpg`;
 
         function submitCode() {
