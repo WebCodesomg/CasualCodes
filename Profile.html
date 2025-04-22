@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Профиль | CasualCodes</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+</head>
+<body>
+
+<header>
+  <h3>CasualCodes</h3>
+</header>
+
+<div id="profile-box">
+  <img id="avatar" class="avatar-large" src="" alt="Avatar">
+  <p id="username"></p>
+  <p id="userid"></p>
+  <p id="name"></p>
+  <p id="premium"></p>
+</div>
+
+<script>
+  const tg = window.Telegram.WebApp;
+  const user = tg.initDataUnsafe.user;
+
+  document.getElementById("avatar").src = `https://t.me/i/userpic/320/${user.username}.jpg`;
+  document.getElementById("username").textContent = `@${user.username}`;
+  document.getElementById("userid").textContent = `ID: ${user.id}`;
+  document.getElementById("name").textContent = `Имя: ${user.first_name} ${user.last_name || ""}`;
+  document.getElementById("premium").textContent = `Telegram Premium: ${user.premium ? "✅ Да" : "❌ Нет"}`;
+</script>
+
+</body>
+</html>
