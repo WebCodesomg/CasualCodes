@@ -1,27 +1,41 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Your Profile | CasualCodes</title>
+  <title>My Profile | CasualCodes</title>
   <link rel="stylesheet" href="style.css">
   <script src="https://telegram.org/js/telegram-web-app.js"></script>
 </head>
 <body>
-  <div class="container">
+  <div class="app-container">
+    <div class="blur-circle purple"></div>
+    <div class="blur-circle teal"></div>
+    
     <header>
-      <h1>Your Profile</h1>
-      <a href="index.html" class="back-button">← Back</a>
+      <div class="header-content">
+        <a href="index.html" class="back-btn">←</a>
+        <h1>My<span>Profile</span></h1>
+      </div>
     </header>
 
     <main>
-      <div class="profile-card">
-        <img id="avatar" class="avatar-large" src="" alt="User Avatar">
+      <div class="profile-card glass">
+        <img id="profile-avatar" class="profile-avatar" src="" alt="Profile">
+        <h2 id="profile-name"></h2>
         <div class="profile-info">
-          <h2 id="name"></h2>
-          <p id="username"></p>
-          <p id="userid"></p>
-          <p id="premium"></p>
+          <div class="info-item">
+            <span>Username</span>
+            <p id="profile-username"></p>
+          </div>
+          <div class="info-item">
+            <span>User ID</span>
+            <p id="profile-id"></p>
+          </div>
+          <div class="info-item">
+            <span>Premium</span>
+            <p id="profile-premium"></p>
+          </div>
         </div>
       </div>
     </main>
@@ -32,12 +46,12 @@
     tg.expand();
     
     const user = tg.initDataUnsafe.user;
-    if (user) {
-      document.getElementById('avatar').src = `https://t.me/i/userpic/320/${user.username}.jpg`;
-      document.getElementById('name').textContent = `${user.first_name} ${user.last_name || ''}`;
-      document.getElementById('username').textContent = `@${user.username}`;
-      document.getElementById('userid').textContent = `ID: ${user.id}`;
-      document.getElementById('premium').textContent = `Premium: ${user.premium ? '✅ Yes' : '❌ No'}`;
+    if(user) {
+      document.getElementById('profile-avatar').src = `https://t.me/i/userpic/320/${user.username}.jpg`;
+      document.getElementById('profile-name').textContent = `${user.first_name} ${user.last_name || ''}`;
+      document.getElementById('profile-username').textContent = `@${user.username}`;
+      document.getElementById('profile-id').textContent = user.id;
+      document.getElementById('profile-premium').textContent = user.premium ? 'Active ✅' : 'Not active ❌';
     }
   </script>
 </body>
