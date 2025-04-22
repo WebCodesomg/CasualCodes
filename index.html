@@ -1,47 +1,57 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CasualCodes</title>
+  <title>CasualCodes | Delta Style</title>
   <link rel="stylesheet" href="style.css">
   <script src="https://telegram.org/js/telegram-web-app.js"></script>
 </head>
 <body>
-  <div class="app-container">
-    <div class="blur-circle pink"></div>
-    <div class="blur-circle blue"></div>
-    
-    <header>
-      <div class="header-content">
-        <h1>Casual<span>Codes</span></h1>
-        <div class="user-avatar" id="user-avatar">
-          <img id="avatar" src="" alt="Profile">
-        </div>
+  <div class="delta-container">
+    <!-- Хедер в стиле Delta -->
+    <header class="delta-header">
+      <h1>CASUAL<span>CODES</span></h1>
+      <div class="delta-user" id="user-avatar">
+        <img id="avatar" src="" alt="Profile">
       </div>
     </header>
 
-    <main>
-      <div class="main-content">
-        <div class="card glass" onclick="location.href='generate.html'">
-          <div class="card-icon">💎</div>
-          <h3>Generate Codes</h3>
-          <p>Create unique codes instantly</p>
+    <!-- Основной контент -->
+    <main class="delta-main">
+      <section class="delta-hero">
+        <h2>Генератор кодов</h2>
+        <p>Создавайте уникальные коды для ваших проектов</p>
+        <button class="delta-btn" onclick="window.location.href='codes.html'">Открыть</button>
+      </section>
+
+      <section class="delta-features">
+        <div class="feature-card delta-card">
+          <div class="feature-icon">⚡</div>
+          <h3>Быстро</h3>
+          <p>Мгновенная генерация кодов</p>
         </div>
-        
-        <div class="card glass" onclick="location.href='Profile.html'">
-          <div class="card-icon">👤</div>
-          <h3>My Profile</h3>
-          <p>View your account</p>
+        <div class="feature-card delta-card">
+          <div class="feature-icon">🔒</div>
+          <h3>Безопасно</h3>
+          <p>Шифрование всех данных</p>
         </div>
-      </div>
+      </section>
     </main>
+
+    <!-- Футер в стиле Delta -->
+    <footer class="delta-footer">
+      <p>© 2023 CasualCodes | Delta Design</p>
+      <div class="social-links">
+        <a href="#" class="social-link">Telegram</a>
+        <a href="#" class="social-link">Discord</a>
+      </div>
+    </footer>
   </div>
 
   <script>
     const tg = window.Telegram.WebApp;
     tg.expand();
-    tg.enableClosingConfirmation();
     
     const user = tg.initDataUnsafe.user;
     if(user) {
