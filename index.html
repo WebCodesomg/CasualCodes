@@ -2,23 +2,101 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <title>WebApp Codes</title>
+  <title>CasualCodes</title>
   <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #242424;
+      color: white;
+      padding: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .avatar {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+
+    #profile-popup {
+      position: absolute;
+      top: 60px;
+      right: 10px;
+      background-color: white;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      padding: 10px;
+      display: none;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      width: 250px;
+      z-index: 100;
+    }
+
+    #profile-popup p {
+      margin: 5px 0;
+    }
+
+    #close-profile {
+      margin-top: 10px;
+      background: #f44336;
+      color: white;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+  </style>
 </head>
 <body>
-  <h2>👤 Профиль</h2>
-  <div id="profile"></div>
 
-  <script>
-    const tg = window.Telegram.WebApp;
-    const user = tg.initDataUnsafe.user;
+<header>
+  <h3 style="margin: 0;">CasualCodes</h3>
+  <img id="avatar" class="avatar" src="" alt="Avatar">
+</header>
 
-    document.getElementById("profile").innerHTML = `
-      <p>@${user.username}</p>
-      <p>#${user.id}</p>
-      <p>${user.first_name} ${user.last_name || ""}</p>
-      <p>Telegram Premium: ${user.premium ? "✅ Да" : "❌ Нет"}</p>
-    `;
-  </script>
+<div id="profile-popup">
+  <p><strong>Профиль</strong></p>
+  <p id="username"></p>
+  <p id="userid"></p>
+  <p id="name"></p>
+  <p id="premium"></p>
+  <button id="close-profile">Выйти</button>
+</div>
+
+<script>
+  const tg = window.Telegram.WebApp;
+  const user = tg.initDataUnsafe.user;
+
+  // Загружаем аватар
+  const avatar = document.getElementById("avatar");
+  avatar.src = `https://t.me/i/userpic/320/${user.username}.jpg`;
+
+  // Отображаем профиль
+  const profilePopup = document.getElementById("profile-popup");
+  const closeBtn = document.getElementById("close-profile");
+
+  document.getElementById("username").textContent = `@${user.username}`;
+  document.getElementById("userid").textContent = `ID: ${user.id}`;
+  document.getElementById("name").textContent = `Имя: ${user.first_name} ${user.last_name || ""}`;
+  document.getElementById("premium").textContent = `Telegram Premium: ${user.premium ? "✅ Да" : "❌ Нет"}`;
+
+  avatar.onclick = () => {
+    profilePopup.style.display = profilePopup.style.display === "none" ? "block" : "none";
+  };
+
+  closeBtn.onclick = () => {
+    profilePopup.style.display = "none";
+  };
+</script>
+
 </body>
 </html>
