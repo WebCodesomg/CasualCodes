@@ -1,86 +1,166 @@
-/* Основа стиля Delta */
+/* Delta-inspired CSS */
 :root {
-  --delta-primary: #6C5CE7;
-  --delta-dark: #2D3436;
-  --delta-light: #F5F6FA;
-  --delta-accent: #FD79A8;
+  --delta-primary: #6c5ce7;
+  --delta-secondary: #a29bfe;
+  --delta-accent: #fd79a8;
+  --delta-dark: #2d3436;
+  --delta-light: #f5f6fa;
+  --delta-text: #333;
 }
 
 body {
-  font-family: 'Segoe UI', sans-serif;
+  font-family: 'Segoe UI', system-ui, sans-serif;
   background-color: var(--delta-light);
-  color: var(--delta-dark);
+  color: var(--delta-text);
   margin: 0;
   padding: 0;
 }
 
-header {
-  background: linear-gradient(135deg, var(--delta-primary), #8c7ae6);
+.delta-container {
+  max-width: 600px;
+  margin: 0 auto;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.delta-header {
+  background: linear-gradient(135deg, var(--delta-primary), var(--delta-secondary));
   color: white;
   padding: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 20px rgba(108, 92, 231, 0.3);
+}
+
+.delta-header h1 {
+  margin: 0;
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+.delta-header h1 span {
+  color: var(--delta-accent);
+}
+
+.delta-user {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid white;
+  cursor: pointer;
+}
+
+.delta-user img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.delta-main {
+  flex: 1;
+  padding: 1.5rem;
+}
+
+.delta-hero {
   text-align: center;
-  box-shadow: 0 4px 12px rgba(108, 92, 231, 0.2);
+  margin-bottom: 2rem;
 }
 
-h1, h2, h3 {
+.delta-hero h2 {
   color: var(--delta-primary);
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
 }
 
-#profile-box {
+.delta-hero p {
+  color: var(--delta-dark);
+  margin-bottom: 1.5rem;
+}
+
+.delta-btn {
+  background: var(--delta-primary);
+  color: white;
+  border: none;
+  padding: 0.8rem 2rem;
+  border-radius: 30px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+  box-shadow: 0 4px 15px rgba(108, 92, 231, 0.4);
+}
+
+.delta-btn:hover {
+  background: var(--delta-secondary);
+  transform: translateY(-2px);
+}
+
+.delta-features {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.delta-card {
   background: white;
   border-radius: 12px;
-  padding: 2rem;
-  margin: 2rem auto;
-  max-width: 500px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  padding: 1.5rem;
   text-align: center;
-}
-
-.avatar-large {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  border: 3px solid var(--delta-primary);
-  object-fit: cover;
-  margin-bottom: 1rem;
-}
-
-/* Стили для навигации как в Delta */
-.nav-section {
-  margin: 2rem 0;
-  padding: 0 1rem;
-}
-
-.nav-section h3 {
-  border-bottom: 2px solid var(--delta-primary);
-  padding-bottom: 0.5rem;
-  display: inline-block;
-}
-
-.nav-links {
-  list-style: none;
-  padding: 0;
-}
-
-.nav-links li {
-  margin: 0.8rem 0;
-}
-
-.nav-links a {
-  color: var(--delta-dark);
-  text-decoration: none;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
   transition: all 0.3s;
 }
 
-.nav-links a:hover {
-  color: var(--delta-primary);
-  margin-left: 5px;
+.delta-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.1);
 }
 
-/* Адаптивность */
-@media (max-width: 600px) {
-  #profile-box {
-    margin: 1rem;
-    padding: 1.5rem;
+.feature-icon {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.delta-card h3 {
+  color: var(--delta-primary);
+  margin-bottom: 0.5rem;
+}
+
+.delta-card p {
+  color: var(--delta-dark);
+  font-size: 0.9rem;
+}
+
+.delta-footer {
+  text-align: center;
+  padding: 1.5rem;
+  color: var(--delta-dark);
+  font-size: 0.9rem;
+}
+
+.social-links {
+  margin-top: 1rem;
+}
+
+.social-link {
+  color: var(--delta-primary);
+  text-decoration: none;
+  margin: 0 0.5rem;
+  font-weight: 500;
+}
+
+@media (max-width: 480px) {
+  .delta-features {
+    grid-template-columns: 1fr;
+  }
+  
+  .delta-header {
+    padding: 1rem;
+  }
+  
+  .delta-main {
+    padding: 1rem;
   }
 }
